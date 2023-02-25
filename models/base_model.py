@@ -4,6 +4,7 @@ Base Model
 """
 import uuid
 from datetime import datetime
+import models
 
 class BaseModel:
     """basemodel"""
@@ -19,10 +20,11 @@ class BaseModel:
         updated_at = datetime.now()
 
     def to_dict(self):
+        format_date = '%Y-%m-%dT%H:%M:%S.%f'
         Base_dict = {
                 "id": self.id,
-                "created_at": self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%f'),
-                "updated_at": self.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%f'),
+                "created_at": self.created_at.strftime(format_date),
+                "updated_at": self.updated_at.strftime(format_date),
                 "__class__": type(self).__name__,
                 }
         return Base_dict
