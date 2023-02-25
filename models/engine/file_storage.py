@@ -20,14 +20,17 @@ class FileStorage:
 
     def save(self):
         '''to the JSON file'''
-        with open(FileStorage.__file_path, 'w') as fp:
-            my_obj = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+        my_obj = {}
+        for k, v in FileStorage.__objects.items():
+            if v:
+                my_obj[k] = v.to_dict()
+        with open(FileStorage.__file_path, 'w', encoding="utf-8") as fp:
             json.dump(my_obj, fp)
 
     def reload(self):
         '''to python objs'''
         try:
-            with open(FileStorage.__file_path, 'r') as fp:
+            with open(FileStorage.__file_path, 'r', encoding="utf-8") as fp:
                 obj_dict = json.load(fp)
                 for k, v in obj_dict.items():
                     cls_name = v['__class__']
@@ -35,4 +38,4 @@ class FileStorage:
                     key = cls_name + "." + v['id']
                     FileStorage.__objects[key] = obj
         except FileNotFoundError:
-            pass
+            return
