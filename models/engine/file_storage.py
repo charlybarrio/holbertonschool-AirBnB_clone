@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''Store first objects'''
 import json
-
+from models.base_model import BaseModel
 
 class FileStorage:
     '''Serializes and deserializes file'''
