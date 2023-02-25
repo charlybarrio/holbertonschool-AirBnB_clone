@@ -5,7 +5,6 @@ Base Model
 import uuid
 from datetime import datetime
 
-
 class BaseModel:
     """basemodel"""
     def __init__(self):
@@ -36,4 +35,4 @@ class BaseModel:
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-            self.updated_at = datatime.now()
+            self.updated_at = datetime.now()
