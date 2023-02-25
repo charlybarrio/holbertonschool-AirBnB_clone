@@ -27,3 +27,13 @@ class BaseModel:
                 "__class__": type(self).__name__,
                 }
         return Base_dict
+
+    def __init__(self, *args, **kwargs):
+        if kwargs:
+            for key, value in kwargs.items():
+                if key is not "__class__":
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datatime.now()
