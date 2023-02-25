@@ -16,17 +16,23 @@ class FileStorage:
         '''sets in __objects the obj with key <classname>.id'''
         cls_name = type(obj).__name__
         key = cls_name + "." + obj.id
-
+        FileStorage.__objects[key] = obj
 
     def save(self):
         '''to the JSON file'''
-        srlz_file = json.dumps(FileStorage.objects) 
+        with open(FileStorage.__file_path, 'w') as fp:
+            obj_dict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            json.dump(obj_dict, fp)
 
     def reload(self):
         '''to python objs'''
-        if not FileStorage.__file_path:
-            return
-        else:
-            with open(FileStorage.__file_path, 'w') as fp:
-                json.load(__object, fp)
-
+        try:
+            with open(FileStorage.__file_path, 'r') as fp:
+                obj_dict = json.load(fp)
+                for k, v in obj_dict.items():
+                    cls_name = v['__class__']
+                    obj = eval(cls_name)(**v)
+                    key = cls_name + "." + v['id']
+                    FileStorage.__objects[key] = obj
+        except FileNotFoundError:
+            pass
