@@ -128,7 +128,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             setattr(obj, name, type(getattr(obj, name))(val))
             obj.save()
-            return
 
 
 if __name__ == '__main__':
