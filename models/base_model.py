@@ -28,6 +28,7 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
+        base_dict = self.__dict__.copy()
         Base_dict = {
                 "id": self.id,
                 "created_at": self.created_at.isoformat(),
