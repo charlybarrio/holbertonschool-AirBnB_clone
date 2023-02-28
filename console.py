@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance"""
         token = args.split()
         objs = storage.all()
-        if len(token) < 1:
+        if not args:
             print("** class name missing **")
             return
         if token[0] not in classes:
@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute doesn't exist **")
             return
         else:
-            setattr(obj, name, tyoe(getattr(obj, name))(val))
+            setattr(obj, name, type(getattr(obj, name))(val))
             obj.save()
             return
 
