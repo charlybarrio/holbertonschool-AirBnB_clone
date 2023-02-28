@@ -46,6 +46,7 @@ class HBNBCommand(cmd.Cmd):
             new_instance.save()
 
     def do_show(self, args):
+        """Prints the string representation of an instance"""
         token = args.split()
 
         if not args:
@@ -61,6 +62,22 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def do_destroy(self, args):
+        """Deletes an instance"""
+        token = args.split()
+        if not args:
+            print("** class name missing **")
+        elif token[0] not in classlist:
+            print("** class doesn't exist **")
+        elif len(token) < 2:
+            print("** instance id missing **")
+        else:
+            key = '{}.{}'.format(token[0], token[1])
+            if key in storage.all():
+                del storage.all()[key]
+                storage.save()
+            else:
+                print("** no instance found **")
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
