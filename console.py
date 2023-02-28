@@ -11,7 +11,8 @@ from models.review import Review
 from models.city import City
 from models.amenity import Amenity
 
-classlist = ["BaseModel", "State", "City", "Amenity"]
+classes = ["BaseModel", "User", "Place", "State", "Review", "City", "Amenity"]
+
 
 class HBNBCommand(cmd.Cmd):
     ''' class for cmd'''
@@ -34,10 +35,10 @@ class HBNBCommand(cmd.Cmd):
         """Create a new instance(saves it and print id)"""
         if not args:
             print("** class name missing **")
-            return\
-        
+            return
+
         token = args.split()
-        if token[0] not in classlist:
+        if token[0] not in classes:
             print("** class doesn't exist **")
             return
         else:
@@ -51,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
 
         if not args:
             print("** class name missing **")
-        elif token[0] not in classlist:
+        elif token[0] not in classes:
             print("** class doesn't exist **")
         elif len(token) < 2:
             print("** instance id missing **")
@@ -67,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
         token = args.split()
         if not args:
             print("** class name missing **")
-        elif token[0] not in classlist:
+        elif token[0] not in classes:
             print("** class doesn't exist **")
         elif len(token) < 2:
             print("** instance id missing **")
@@ -81,13 +82,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """ints all string representation of all instances"""
-        token = args.split() 
+        token = args.split()
         objs = []
 
         if not args:
             objs = [str(obj) for obj in storage.all().values()]
         else:
-            if token[0] in classlist:
+            if token[0] in classes:
                 objs = [str(obj) for obj in storage.all().values()
                         if obj.__class__.__name__ == token[0]]
             else:
