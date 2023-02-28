@@ -96,6 +96,40 @@ class HBNBCommand(cmd.Cmd):
                 return
         print(objs)
 
+    def do_update(self, args):
+        """Updates an instance"""
+        token = args.split()
+        objs = storage.all()
+        if len(token) < 1:
+            print("** class name missing **")
+            return
+        if token[0] not in classes:
+            print("** class doesn't exist **")
+            return
+        if len(token) < 2:
+            print("** instance id missing **")
+            return
+        key = '{}.{}'.format(token[0], token[1])
+        if key not in objs:
+            print("** no instance found **")
+            return
+        if len(token) < 3:
+            print("** attribute name missing **")
+            return
+        if len(token) < 4:
+            print("** value missing **")
+            return
+        obj = objs[key]
+        name = token[2]
+        val = token[3]
+        if name not in obj.__dict__:
+            print("** attribute doesn't exist **")
+            return
+        else:
+            setattr(obj, name, tyoe(getattr(obj, name))(val))
+            obj.save()
+            return
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
