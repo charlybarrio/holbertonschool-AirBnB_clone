@@ -92,7 +92,9 @@ class HBNBCommand(cmd.Cmd):
                         if obj.__class__.__name__ == token[0]]
             else:
                 print("** class doesn't exist **")
+                return
         print(objs)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
