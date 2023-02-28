@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 '''entry point of the command interpreter'''
 import cmd
+import json
+from models import storage
+
 
 classlist = ["BaseModel", "State", "City", "Amenity"]
 
@@ -43,12 +46,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif token[0] not in classlist:
             print("** class doesn't exist **")
-        elif len(args) < 2:
+        elif len(token) < 2:
             print("** instance id missing **")
         else:
             key = '{}.{}'.format(token[0], token[1])
-            if key in models.storage.all():
-                print(models.storage.all()[key])
+            if key in storage.all():
+                print(storage.all()[key])
             else:
                 print("** no instance found **")
 
