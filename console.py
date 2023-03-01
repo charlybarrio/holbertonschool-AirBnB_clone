@@ -126,8 +126,10 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute doesn't exist **")
             return
         else:
-            setattr(obj, name, val)
+            setattr(obj, name, type(getattr(obj, name))(val))
             obj.save()
+            return
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

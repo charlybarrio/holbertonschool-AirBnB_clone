@@ -9,6 +9,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 class FileStorage:
     '''Serializes and deserializes file'''
     __file_path = "file.json"
