@@ -73,6 +73,8 @@ EOF  all  create  destroy  help  quit  show  update
 
 - *update:* Updates an instance based on the class name id by adding or updating attribute
 
+- *quit and EOF:* Exit to the program 
+
 ## Usage/Examples :toolbox:
 
 That is how the console works in interactive mode:
