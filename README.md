@@ -5,9 +5,6 @@
 This is the first part to the AirBnB clone Proyect, where we work with HTML/CSS templating, database storage, API, front-end integration… 
 But first, the console. :computer:
 
-<p align="center">
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.prnewswire.com%2Fnews-releases%2Fairbnb-announces-pricing-of-initial-public-offering-301190081.html&psig=AOvVaw3jMV-p3wVHwLoma0pqAkkg&ust=1677705953917000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCKj46vSTuf0CFQAAAAAdAAAAABAD"> 
-</p>
 On this proyect we started with: 
 - Put in place parent class called BaseModel
 - serealization and deserealization:
@@ -55,6 +52,16 @@ What did you learn while building this project?
 - Python3
 - Pycodestyle (version 2.7.*)
 ## Console commands :computer:
+
+```
+(hbnb)help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+
+(hbnb)
+```
 
 - *create:* Creates a new instance of BaseModel and prints the id.
 
