@@ -70,7 +70,7 @@
     border: #DDDDDD solid 1px;
     border-radius: 4px;
 }
-h2 {
+.filters h2 {
     margin-left: 25px;
     margin-bottom: -2px;
 }
